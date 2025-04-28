@@ -1,1 +1,1 @@
-Traceability software top record part scanned in MySQL database
+Traceability software to record part scanned in MySQL database
