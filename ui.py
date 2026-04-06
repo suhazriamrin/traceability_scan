@@ -14,163 +14,138 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(1121, 821)
-        palette = QtGui.QPalette()
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
-        brush.setStyle(QtCore.Qt.SolidPattern)
-        Dialog.setPalette(palette)
-        Dialog.setAutoFillBackground(True)
+        Dialog.resize(1000, 700)
 
-        self.Input = QtWidgets.QLineEdit(Dialog)
-        self.Input.setEnabled(True)
-        self.Input.setGeometry(QtCore.QRect(110, 140, 901, 81))
-        self.Input.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(30)
-        self.Input.setFont(font)
-        self.Input.setAcceptDrops(True)
-        self.Input.setAutoFillBackground(True)
-        self.Input.setObjectName("Input")
+        # ===== STYLE =====
+        Dialog.setStyleSheet("""
+        QDialog {
+            background-color: #f5f7fa;
+        }
 
+        QLabel#title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        QLabel#subtitle {
+            font-size: 22px;
+            color: #606266;
+        }
+
+        QLineEdit {
+            border: 2px solid #dcdfe6;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 24px;
+            background: white;
+        }
+
+        QLineEdit:focus {
+            border-color: #409eff;
+        }
+
+        QGroupBox {
+            border: none;
+            border-radius: 15px;
+            background: white;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        QGroupBox::title {
+            subcontrol-origin: margin;
+            left: 20px;
+            padding: 5px 10px;
+            color: #606266;
+        }
+
+        QLabel.value {
+            background: #f0f2f5;
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 22px;
+        }
+
+        QLabel.label {
+            font-size: 20px;
+            color: #909399;
+        }
+
+        QLabel#status {
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 24px;
+            background: #ecf5ff;
+            color: #409eff;
+        }
+        """)
+
+        # ===== MAIN LAYOUT =====
+        self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
+        self.verticalLayout.setContentsMargins(40, 40, 40, 40)
+        self.verticalLayout.setSpacing(20)
+
+        # ===== TITLE =====
         self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(110, 40, 901, 81))
-        self.label.setMinimumSize(QtCore.QSize(0, 0))
-        self.label.setSizeIncrement(QtCore.QSize(0, 0))
-        self.label.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(34)
-        self.label.setFont(font)
-        self.label.setAutoFillBackground(True)
-        self.label.setFrameShape(QtWidgets.QFrame.Box)
-        self.label.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.label.setLineWidth(1)
-        self.label.setMidLineWidth(0)
-        self.label.setScaledContents(False)
+        self.label.setObjectName("title")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
-        self.label.setWordWrap(False)
-        self.label.setObjectName("label")
+        self.verticalLayout.addWidget(self.label)
 
+        # ===== INPUT =====
+        self.Input = QtWidgets.QLineEdit(Dialog)
+        self.Input.setMinimumHeight(60)
+        self.verticalLayout.addWidget(self.Input)
+
+        # ===== SUBTITLE =====
+        self.label_7 = QtWidgets.QLabel(Dialog)
+        self.label_7.setObjectName("subtitle")
+        self.label_7.setAlignment(QtCore.Qt.AlignCenter)
+        self.verticalLayout.addWidget(self.label_7)
+
+        # ===== GROUP BOX =====
         self.groupBox = QtWidgets.QGroupBox(Dialog)
-        self.groupBox.setGeometry(QtCore.QRect(110, 310, 901, 321))
-        self.groupBox.setPalette(palette)
-        self.groupBox.setAutoFillBackground(True)
-        self.groupBox.setObjectName("groupBox")
+        self.verticalLayout.addWidget(self.groupBox)
 
-        self.label_3 = QtWidgets.QLabel(self.groupBox)
-        self.label_3.setGeometry(QtCore.QRect(210, 30, 661, 61))
-        self.label_3.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(24)
-        self.label_3.setFont(font)
-        self.label_3.setAutoFillBackground(True)
-        self.label_3.setFrameShape(QtWidgets.QFrame.Box)
-        self.label_3.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.label_3.setLineWidth(1)
-        self.label_3.setMidLineWidth(0)
-        self.label_3.setText("")
-        self.label_3.setScaledContents(False)
-        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_3.setWordWrap(False)
-        self.label_3.setObjectName("label_3")
+        self.gridLayout = QtWidgets.QGridLayout(self.groupBox)
+        self.gridLayout.setSpacing(15)
 
-
+        # Labels
         self.label_2 = QtWidgets.QLabel(self.groupBox)
-        self.label_2.setGeometry(QtCore.QRect(10, 30, 151, 61))
-        self.label_2.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(34)
-        self.label_2.setFont(font)
-        self.label_2.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.label_2.setObjectName("label_2")
-
-        self.label_5 = QtWidgets.QLabel(self.groupBox)
-        self.label_5.setGeometry(QtCore.QRect(210, 130, 661, 61))
-        self.label_5.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_5.setSizeIncrement(QtCore.QSize(0, 0))
-        self.label_5.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(24)
-        self.label_5.setFont(font)
-        self.label_5.setAutoFillBackground(True)
-        self.label_5.setFrameShape(QtWidgets.QFrame.Box)
-        self.label_5.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.label_5.setLineWidth(1)
-        self.label_5.setMidLineWidth(0)
-        self.label_5.setText("")
-        self.label_5.setScaledContents(False)
-        self.label_5.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_5.setWordWrap(False)
-        self.label_5.setObjectName("label_5")
+        self.label_2.setProperty("class", "label")
 
         self.label_4 = QtWidgets.QLabel(self.groupBox)
-        self.label_4.setGeometry(QtCore.QRect(10, 130, 151, 61))
-        self.label_4.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(34)
-        self.label_4.setFont(font)
-        self.label_4.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.label_4.setWordWrap(True)
-        self.label_4.setObjectName("label_4")
+        self.label_4.setProperty("class", "label")
 
         self.part_3 = QtWidgets.QLabel(self.groupBox)
-        self.part_3.setGeometry(QtCore.QRect(10, 230, 151, 61))
-        self.part_3.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(34)
-        self.part_3.setFont(font)
-        self.part_3.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
-        self.part_3.setWordWrap(True)
-        self.part_3.setObjectName("part_3")
+        self.part_3.setProperty("class", "label")
+
+        # Values
+        self.label_3 = QtWidgets.QLabel(self.groupBox)
+        self.label_3.setProperty("class", "value")
+
+        self.label_5 = QtWidgets.QLabel(self.groupBox)
+        self.label_5.setProperty("class", "value")
 
         self.p_part_3 = QtWidgets.QLabel(self.groupBox)
-        self.p_part_3.setGeometry(QtCore.QRect(210, 230, 661, 61))
-        self.p_part_3.setMinimumSize(QtCore.QSize(0, 0))
-        self.p_part_3.setSizeIncrement(QtCore.QSize(0, 0))
-        self.p_part_3.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(24)
-        self.p_part_3.setFont(font)
-        self.p_part_3.setAutoFillBackground(True)
-        self.p_part_3.setFrameShape(QtWidgets.QFrame.Box)
-        self.p_part_3.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.p_part_3.setLineWidth(1)
-        self.p_part_3.setMidLineWidth(0)
-        self.p_part_3.setText("")
-        self.p_part_3.setScaledContents(False)
-        self.p_part_3.setAlignment(QtCore.Qt.AlignCenter)
-        self.p_part_3.setWordWrap(False)
-        self.p_part_3.setObjectName("p_part_3")
+        self.p_part_3.setProperty("class", "value")
 
+        # Add to layout
+        self.gridLayout.addWidget(self.label_2, 0, 0)
+        self.gridLayout.addWidget(self.label_3, 0, 1)
+
+        self.gridLayout.addWidget(self.label_4, 1, 0)
+        self.gridLayout.addWidget(self.label_5, 1, 1)
+
+        self.gridLayout.addWidget(self.part_3, 2, 0)
+        self.gridLayout.addWidget(self.p_part_3, 2, 1)
+
+        # ===== STATUS =====
         self.label_6 = QtWidgets.QLabel(Dialog)
-        self.label_6.setGeometry(QtCore.QRect(110, 660, 901, 91))
-        self.label_6.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_6.setSizeIncrement(QtCore.QSize(0, 0))
-        self.label_6.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(34)
-        self.label_6.setFont(font)
-        self.label_6.setAutoFillBackground(True)
-        self.label_6.setFrameShape(QtWidgets.QFrame.Box)
-        self.label_6.setFrameShadow(QtWidgets.QFrame.Plain)
-        self.label_6.setLineWidth(1)
-        self.label_6.setMidLineWidth(0)
-        self.label_6.setText("")
-        self.label_6.setScaledContents(False)
+        self.label_6.setObjectName("status")
         self.label_6.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_6.setWordWrap(False)
-        self.label_6.setObjectName("label_6")
-
-        self.label_7 = QtWidgets.QLabel(Dialog)
-        self.label_7.setGeometry(QtCore.QRect(110, 220, 901, 61))
-        self.label_7.setPalette(palette)
-        font = QtGui.QFont()
-        font.setPointSize(34)
-        self.label_7.setFont(font)
-        self.label_7.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_7.setObjectName("label_7")
+        self.verticalLayout.addWidget(self.label_6)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -178,8 +153,15 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle("App")
         self.label.setText("PIEZO PCB PAIRING")
+        self.label_7.setText("SCAN SERIAL NUMBER")
         self.groupBox.setTitle("Information")
+
         self.label_2.setText("WIP")
         self.label_4.setText("PCB")
         self.part_3.setText("Piezo")
-        self.label_7.setText("SCAN SERIAL NUMBER")
+
+        self.label_3.setText("")
+        self.label_5.setText("")
+        self.p_part_3.setText("")
+
+        self.label_6.setText("Waiting for scan...")
