@@ -14,5 +14,6 @@ A desktop application designed to record scanned parts into a MySQL database.
 **Note:**
 - Database configuration (host, credentials, and schema) must be set up prior to use, as the system is tailored to specific operational requirements.
 
-<img width="563" height="433" alt="image" src="https://github.com/user-attachments/assets/f927d0bc-439d-4aba-a11e-c3f7078ac718" />
+<img width="501" height="373" alt="image" src="https://github.com/user-attachments/assets/672ebb2d-d569-4a6c-85fe-01cd1b987e01" />
+
 
