@@ -1,9 +1,18 @@
-A software to record part scanned into MySQL database.
+A desktop application designed to record scanned parts into a MySQL database.
 
-**Input**: Serial number.
+**Input:**
+- Serial number and part barcodes
 
-**Data check**: duplication, illegal prefix, wrong part number etc.
+**Validation:**
+- Duplicate checks against existing records
+- Prefix validation based on predefined rules
+- Verification of correct part numbers and sequence
 
-**Output**: Data recorded in mysql.
+**Output:**
+- Validated data is automatically stored in the MySQL database
 
-**Note** #Database configuration is required before able to use this software, as its content refered to specific tables.
+**Note:**
+- Database configuration (host, credentials, and schema) must be set up prior to use, as the system is tailored to specific operational requirements.
+
+<img width="563" height="433" alt="image" src="https://github.com/user-attachments/assets/f927d0bc-439d-4aba-a11e-c3f7078ac718" />
+
